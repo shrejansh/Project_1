@@ -33,5 +33,5 @@ def insert_marks(stu):
 # std_1=Student('Shreyansh','1801zz32','moron',8738299822,{1:23,2:45})
 # insert_student(std_1)
 # insert_marks(std_1)
-c.execute("SELECT * FROM project1_registration")
-print(c.fetchall())
+# c.execute("SELECT * FROM project1_registration")
+# print(c.fetchall())
