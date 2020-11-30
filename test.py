@@ -16,11 +16,16 @@ c=conn.cursor()
 #                 quiz_num integer,
 #                 total_marks integer
 #             )""")
-
+def get_registered(roll):
+    c.execute("SELECT * FROM project1_registration WHERE roll=?",(roll,))
+    return c.fetchone()
+    
 def find_stu(roll,password):
     c.execute("SELECT * FROM project1_registration WHERE roll=?",(roll,))
+    a=c.fetchall()
     c.execute("SELECT * FROM project1_registration WHERE password=?",(password,))
-    return len(c.fetchall())*len(c.fetchall())
+    b=c.fetchall()
+    return len(a)*len(b)
 
 def insert_student(stu):
     with conn:
@@ -28,10 +33,11 @@ def insert_student(stu):
 
 def insert_marks(stu):
     with conn:
-        c.execute("INSERT INTO project1_marks VALUES (:roll,:quiz_no,:total_marks)",{'roll':stu.roll,'quiz_no':len(stu.quiz_p),'total_marks':stu.quiz_p[len(stu.quiz_p)]})
+        c.execute("INSERT INTO project1_marks VALUES (:roll,:quiz_no,:total_marks)",{'roll':stu.roll,'quiz_no':stu.quiz_no,'total_marks':stu.marks})
 
 # std_1=Student('Shreyansh','1801zz32','moron',8738299822,{1:23,2:45})
 # insert_student(std_1)
 # insert_marks(std_1)
-# c.execute("SELECT * FROM project1_registration")
+# c.execute("SELECT * FROM project1_marks")
 # print(c.fetchall())
+# print(get_registered('1801zz32'))
