@@ -1,5 +1,5 @@
 from student import Student
-from test import insert_student,insert_marks,find_stu,get_registered
+from test import insert_student,insert_marks,find_stu,get_registered,check_quiz
 import sqlite3
 from quiz_template import run_quiz
 
@@ -21,6 +21,8 @@ else:
     l.append(0)
     std_1=Student.from_list(l)
 quiz_no=int(input("Which quiz do you want to take?"))
+check_quiz(roll,quiz_no)
+    
 run_quiz(quiz_no)
 std_1.quiz_no=quiz_no
 std_1.marks=int(run_quiz(quiz_no))

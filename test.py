@@ -16,6 +16,16 @@ c=conn.cursor()
 #                 quiz_num integer,
 #                 total_marks integer
 #             )""")
+
+def check_quiz(roll,quiz_no):
+    c.execute("SELECT * FROM project1_marks WHERE roll=? AND quiz_num=?",(roll,quiz_no))
+    b=c.fetchone()
+    if b:
+        c.execute("DELETE FROM project1_marks WHERE roll=? AND quiz_num=?",(roll,quiz_no))
+    pass
+        
+    
+    
 def get_registered(roll):
     c.execute("SELECT * FROM project1_registration WHERE roll=?",(roll,))
     return c.fetchone()
@@ -38,6 +48,7 @@ def insert_marks(stu):
 # std_1=Student('Shreyansh','1801zz32','moron',8738299822,{1:23,2:45})
 # insert_student(std_1)
 # insert_marks(std_1)
-# c.execute("SELECT * FROM project1_marks")
-# print(c.fetchall())
+c.execute("SELECT * FROM project1_marks")
+print(c.fetchall())
 # print(get_registered('1801zz32'))
+# print(check_quiz('kale',1))
