@@ -49,6 +49,6 @@ def insert_marks(stu):
 # insert_student(std_1)
 # insert_marks(std_1)
 c.execute("SELECT * FROM project1_marks")
-print(c.fetchall())
+print(c.fetchone())
 # print(get_registered('1801zz32'))
 # print(check_quiz('kale',1))
